@@ -1,0 +1,25 @@
+.header {
+  position: relative;
+  text-align: center;
+  padding: 40px;
+}
+
+.leftBtn {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.rightBtn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.center h1 {
+  margin: 0;
+}
+
+.center p {
+  color: gray;
+}

@@ -1,0 +1,10 @@
+  .resultItem {
+  padding: 40px 20px;
+  border-bottom: 1px solid #cec6c6;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.resultItem:hover {
+  background: #e9f5ff;
+}
