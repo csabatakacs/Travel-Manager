@@ -1,10 +1,31 @@
-  .resultItem {
+.resultItem {
   padding: 40px 20px;
-  border-bottom: 1px solid #cec6c6;
-  transition: 0.2s;
+  border-bottom: 1px solid #eeeeee;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .resultItem:hover {
-  background: #e9f5ff;
+  background: #ddf1f0;
+  box-shadow: inset 3px 0 0 #007bff;
+}
+
+.resultName {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.resultDetails {
+  display: flex;
+  gap: 15px;
+  font-size: 18px;
+  color: #666;
+}
+
+.resultDetails span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
