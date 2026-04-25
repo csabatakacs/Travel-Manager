@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Class_Library_Travel_Manager
 {
@@ -16,19 +12,20 @@ namespace Class_Library_Travel_Manager
         public int Capacity { get; set; }
         public int EntryPrice { get; set; }
         public ICollection<AvailableDate> AvailableDates { get; set; }
+        public ICollection<User> UsersWhoFavorited { get; set; }
 
+        private Attraction() { }
 
-        public Attraction(int Id, string Name, string Type, string Description, string Location, int Capacity, int EntryPrice)
+        public Attraction(string name, string type, string description, string location, int capacity, int entryPrice)
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.Type = Type;
-            this.Description = Description;
-            this.Location = Location;
-            this.Capacity = Capacity;
-            this.EntryPrice = EntryPrice;
+            Name = name;
+            Type = type;
+            Description = description;
+            Location = location;
+            Capacity = capacity;
+            EntryPrice = entryPrice;
             AvailableDates = new List<AvailableDate>();
+            UsersWhoFavorited = new List<User>();
         }
-       
     }
 }

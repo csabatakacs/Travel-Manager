@@ -12,3 +12,4 @@ C:\Users\Takacs Andras Csaba\Desktop\utcn\Anul III\Sem II\II\Proiect\Class_Libra
 C:\Users\Takacs Andras Csaba\Desktop\utcn\Anul III\Sem II\II\Proiect\Class_Library_Travel_Manager\obj\Debug\net8.0\Class_Library_Travel_Manager.pdb
 C:\Users\Takacs Andras Csaba\Desktop\utcn\Anul III\Sem II\II\Proiect\Class_Library_Travel_Manager\obj\Debug\net8.0\Class_Library_Travel_Manager.genruntimeconfig.cache
 C:\Users\Takacs Andras Csaba\Desktop\utcn\Anul III\Sem II\II\Proiect\Class_Library_Travel_Manager\obj\Debug\net8.0\ref\Class_Library_Travel_Manager.dll
+C:\Users\Takacs Andras Csaba\Desktop\utcn\Anul III\Sem II\II\Proiect\Class_Library_Travel_Manager\obj\Debug\net8.0\Class_Library_Travel_Manager.sourcelink.json

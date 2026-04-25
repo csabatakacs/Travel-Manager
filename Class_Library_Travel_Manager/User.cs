@@ -1,29 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Class_Library_Travel_Manager
 {
     public class User
     {
-        public int Id {  get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Surname {  get; set; }
-        public string Email {  get; set; }
-        public string Password {  get; set; }
-        public List<Booking> Bookings { get; set; }
-        public List<Reviews> Reviews { get; set; }
-        public List<Attraction> FavoriteAttractions { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public ICollection<Booking> Bookings { get; set; }
+        public ICollection<Reviews> Reviews { get; set; }
+        public ICollection<Attraction> FavoriteAttractions { get; set; }
 
-        public User(int Id, string Name, string Surname, string Email, string Password)
+        private User() { }
+
+        public User(string name, string surname, string email, string password)
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.Surname = Surname;
-            this.Email = Email;
-            this.Password = Password;
+            Name = name;
+            Surname = surname;
+            Email = email;
+            Password = password;
             Bookings = new List<Booking>();
             Reviews = new List<Reviews>();
             FavoriteAttractions = new List<Attraction>();

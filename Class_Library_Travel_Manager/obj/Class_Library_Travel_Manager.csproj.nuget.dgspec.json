@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[3.1.5, )"
             },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.3.9, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.25, )"
@@ -75,6 +79,10 @@
             "ZXing.Net": {
               "target": "Package",
               "version": "[0.16.11, )"
+            },
+            "ZXing.Net.Bindings.ImageSharp.V2": {
+              "target": "Package",
+              "version": "[0.16.18, )"
             },
             "ZXing.Net.Bindings.Windows.Compatibility": {
               "target": "Package",
