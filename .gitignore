@@ -1,0 +1,19 @@
+# Visual Studio
+.vs/
+
+# Build folders
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+
+# Compiled files
+*.dll
+*.exe
+*.pdb
+
+# Node (React)
+node_modules/
+build/
