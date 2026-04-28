@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { attractions } from "../data/attractions.js";
 import "./AttractionDetails.css";
 
 function AttractionDetails() {
@@ -10,7 +9,6 @@ function AttractionDetails() {
   const [attraction, setAttraction] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // form (de conectat la backend )
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,8 +16,24 @@ function AttractionDetails() {
   });
 
   useEffect(() => {
-    const found = attractions.find(item => item.id === Number(id));
-    setAttraction(found);
+    const fetchAttraction = async () => {
+      try {
+        const response = await fetch("https://localhost:7087/api/Search");
+
+        if (!response.ok) {
+          throw new Error("API error");
+        }
+
+        const data = await response.json();
+        const found = data.find(item => item.id === Number(id));
+
+        setAttraction(found);
+      } catch (error) {
+        console.error("Eroare la incarcarea atractiei:", error);
+      }
+    };
+
+    fetchAttraction();
   }, [id]);
 
   if (!attraction) return <p>Attraction not found.</p>;
@@ -40,7 +54,6 @@ function AttractionDetails() {
 
   return (
     <div className="details-container">
-
       <button onClick={() => navigate(-1)}>
         Back
       </button>
@@ -48,21 +61,18 @@ function AttractionDetails() {
       <h1>{attraction.name}</h1>
       <p>{attraction.location}</p>
       <p>{attraction.description}</p>
-      <p>{attraction.price} RON</p>
+      <p>{attraction.entryPrice} RON</p>
 
       <button onClick={() => setShowModal(true)}>
         Buy ticket
       </button>
 
-      {/* Pop up form */}
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-
             <h2>Buy ticket</h2>
 
             <form onSubmit={handleSubmit} className="form">
-
               <input
                 name="name"
                 placeholder="Full name"
@@ -98,13 +108,10 @@ function AttractionDetails() {
               >
                 Cancel
               </button>
-
             </form>
-
           </div>
         </div>
       )}
-
     </div>
   );
 }

@@ -1,19 +1,35 @@
-# Visual Studio
+# ======================
+# Visual Studio / .NET
+# ======================
 .vs/
-
-# Build folders
 bin/
 obj/
-
-# User files
 *.user
 *.suo
+*.rsuser
 
 # Compiled files
 *.dll
 *.exe
 *.pdb
 
-# Node (React)
+# ======================
+# Node / React
+# ======================
 node_modules/
 build/
+dist/
+.env
+.env.local
+
+# ======================
+# Logs
+# ======================
+*.log
+npm-debug.log*
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db

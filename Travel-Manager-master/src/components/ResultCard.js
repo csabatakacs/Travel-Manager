@@ -15,7 +15,7 @@ function ResultCard({ item, onClick }) {
 
       <div className="resultDetails">
         <span>{item.location}</span>
-        <span>{item.price} RON</span>
+        <span>{item.entryPrice} RON</span> 
       </div>
     </div>
   );
