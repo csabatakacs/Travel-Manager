@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./SearchBar.css";
+import { API_URL } from "../services/api";
 
 function SearchBar({ setResults }) {
   const [query, setQuery] = useState("");
@@ -22,7 +23,7 @@ function SearchBar({ setResults }) {
         if (location !== "") params.append("location", location);
         if (sort !== "none") params.append("sort", sort);
 
-        const response = await fetch(`https://localhost:7087/api/Search?${params.toString()}`);
+        const response = await fetch(`${API_URL}/api/Search?${params.toString()}`);
 
         if (!response.ok) {
           throw new Error("API error");

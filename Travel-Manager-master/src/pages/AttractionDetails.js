@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./AttractionDetails.css";
+import { isLoggedIn, getCurrentUser } from "../services/authService";
+import { API_URL } from "../services/api";
 
 function AttractionDetails() {
   const { id } = useParams();
@@ -9,16 +11,21 @@ function AttractionDetails() {
   const [attraction, setAttraction] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  const user = getCurrentUser();
+
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    tickets: 1
+    fullName: user?.name || "",
+    email: user?.email || "",
+    phoneNumber: "",
+    tickets: 1,
+    paymentMethod: "",
+    notes: ""
   });
 
   useEffect(() => {
     const fetchAttraction = async () => {
       try {
-        const response = await fetch("https://localhost:7087/api/Search");
+        const response = await fetch(`${API_URL}/api/Search`);
 
         if (!response.ok) {
           throw new Error("API error");
@@ -45,12 +52,35 @@ function AttractionDetails() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("ORDER DATA:", formData);
-    alert("Ticket reserved (frontend only)");
-    setShowModal(false);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const orderData = {
+    ...formData,
+    attractionId: Number(id)
   };
+
+  console.log("ORDER DATA:", orderData);
+
+  alert("Ticket reserved");
+  setShowModal(false);
+};
+// Daca este endpoint in partea backend
+/* const response = await fetch(`${API_URL}/api/Tickets`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(orderData)
+}); */
+
+ const handleBuyTicket = () => {
+  if (!isLoggedIn()) {
+    navigate("/auth");
+    return;
+  }
+  setShowModal(true);
+};
 
   return (
     <div className="details-container">
@@ -63,7 +93,7 @@ function AttractionDetails() {
       <p>{attraction.description}</p>
       <p>{attraction.entryPrice} RON</p>
 
-      <button onClick={() => setShowModal(true)}>
+      <button onClick={handleBuyTicket}>
         Buy ticket
       </button>
 
@@ -74,17 +104,26 @@ function AttractionDetails() {
 
             <form onSubmit={handleSubmit} className="form">
               <input
-                name="name"
+                name="fullName"
                 placeholder="Full name"
-                value={formData.name}
+                value={formData.fullName}
                 onChange={handleChange}
                 required
               />
 
               <input
                 name="email"
+                type="email"
                 placeholder="Email"
                 value={formData.email}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                name="phoneNumber"
+                placeholder="Phone number"
+                value={formData.phoneNumber}
                 onChange={handleChange}
                 required
               />
@@ -96,6 +135,24 @@ function AttractionDetails() {
                 value={formData.tickets}
                 onChange={handleChange}
                 required
+              />
+
+              <select
+                name="paymentMethod"
+                value={formData.paymentMethod}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select payment method</option>
+                <option value="card">Card</option>
+                <option value="cash">Cash</option>
+              </select>
+
+              <textarea
+                name="notes"
+                placeholder="Additional notes"
+                value={formData.notes}
+                onChange={handleChange}
               />
 
               <button type="submit">
